@@ -1,8 +1,0 @@
-Hallo
-Änderung
-Hallo Noah
-
-<<<<<<< HEAD
-Jetzt geht es bestimmt nicht mehr
-=======
->>>>>>> eb10ecabdcf4a9c38d62ad9980071d7d678c96a9
