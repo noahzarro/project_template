@@ -1,48 +1,39 @@
 # Modeling and Simulation of Social Systems Fall 2018 – Research Plan (Template)
 (text between brackets to be removed)
 
-> * Group Name: (be creative!)
-> * Group participants names: (alphabetically sorted by last name)
+> * Group Name: JosuNo
+> * Group participants names: Josua Graf, Noah Zarro
 > * Project Title: (can be changed later)
-> * Programming language: (Python or MATLAB)
+> * Programming language: Python
 
 ## General Introduction
 
-(States your motivation clearly: why is it important / interesting to solve this problem?)
-(Add real-world examples, if any)
-(Put the problem into a historical context, from what does it originate? Are there already some proposed solutions?)
+Humans would get completly lost if you let them walk in the desert for some time, but ants with a only 0.1 mg brain solve the task of finding home with ease. It would be great if we could adapt parts of their navigation skills.
 
 ## The Model
 
-(Define dependent and independent variables you want to study. Say how you want to measure them.) (Why is your model a good abstraction of the problem you want to study?) (Are you capturing all the relevant aspects of the problem?)
-
+With our model we want to measure how much an ant relies on known landmarks for it's orientation in relation to its 'global vector' an estimation of its position based on its movement. We want to program the behaviour of a desert ant, and implement the model of Wehner, proposed in his thesis. Than we can compare our simulated results to his experimental data.
 
 ## Fundamental Questions
 
-(At the end of the project you want to find the answer to these questions)
-(Formulate a few, clear questions. Articulate them in sub-questions, from the more general to the more specific. )
-
+Is the model proposed by Wehner correct?
+What dominates the ants navigation, the global or local vector?
 
 ## Expected Results
 
-(What are the answers to the above questions that you expect to find before starting your research?)
-
+We suppose that our simulated data will be similar to the experimental data of Wehner. We expect, that the ants mainly use the 'global vector' as a base for their orientation.
 
 ## References 
 
-(Add the bibliographic references you intend to use)
-(Explain possible extension to the above models)
-(Code / Projects Reports of the previous year)
+https://www.ethz.ch/content/dam/ethz/special-interest/gess/computational-social-science-dam/documents/education/Fall2015/matlab/projects/21-Desert_Ant_Behavior.zip
 
 
 ## Research Methods
 
-(Cellular Automata, Agent-Based Model, Continuous Modeling...) (If you are not sure here: 1. Consult your colleagues, 2. ask the teachers, 3. remember that you can change it afterwards)
-
+Agent-Based Model, but we are not yet sure
 
 ## Other
 
-(mention datasets you are going to use)
 
 # Reproducibility
 
