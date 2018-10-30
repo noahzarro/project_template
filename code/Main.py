@@ -17,6 +17,10 @@ cycles = 100
 
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
 
+# Define Map
+map = np.zeros((1600,1600))
+map[0,0:799] = 1    #Define channel
+map[800,800] = 3    #Define nest
 
 # Main Loop
 
