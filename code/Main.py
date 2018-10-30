@@ -11,7 +11,9 @@ track = position
 cycles = 100
 
 # Define Map
-
+map = np.zeros((1600,1600))
+map[0,0:799] = 1    #Define channel
+map[800,800] = 3    #Define nest
 
 # Main Loop
 
