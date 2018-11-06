@@ -8,7 +8,7 @@ import matplotlib.patches as mpatches
 from possibleDirection import possible_direction
 
 # Define Ant
-position = [1600-2,1600-2] #possible values: ints between 0 and 1600
+position = [1600-2,1600-2] #possible values: ints between 0 and 1599
 globalVector = np.array([-800,-800])
 track = list()
 track.append(position)
