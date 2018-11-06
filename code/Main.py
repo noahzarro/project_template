@@ -8,9 +8,8 @@ import matplotlib.patches as mpatches
 from possibleDirection import possible_direction
 
 # Define Ant
-position = (0,0) #possible values: floats between 0 and 1600
+position = (0,0) #possible values: ints between 0 and 1600
 globalVector = (10,10)
-stepLength = 1
 track = list()
 track.append(position)
 
@@ -32,7 +31,7 @@ map[799:800,799:800] = 3    #Define nest of size 2x2
 for i in range(cycles):
     desired = desired_direction(globalVector, position)
     possible = possible_direction(position)
-    step = actual_step(desired, possible, stepLength)
+    step = actual_step(desired, possible)
     position = position + step
     globalVector = globalVector - step
     track.append(position)
