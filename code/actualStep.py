@@ -6,7 +6,6 @@ def actual_step(desired, possible, stepLength):
     xmax = possible(1)
     ymin = possible(2)
     ymax = possible(3)
-
     actual = desired
 
     if (desired[0]<0 and xmin > -1): #if desired.x < 0 and xmin not -1 (xmin == 0) set actual.x to 0
