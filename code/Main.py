@@ -9,7 +9,7 @@ from possibleDirection import possible_direction
 
 # Define Ant
 position = [0,0] #possible values: ints between 0 and 1600
-globalVector = (10,10)
+globalVector = np.array([10,10])
 track = list()
 track.append(position)
 
@@ -21,7 +21,7 @@ for i in range(cycles):
     desired = desired_direction(globalVector, position)
     possible = possible_direction(position)
     step = actual_step(desired, possible)
-    position = position + step
+    position = [position[0] + step[0], position[1] + step[1]]
     globalVector = globalVector - step
     track.append(position)
 
@@ -32,3 +32,5 @@ ax = fig.add_subplot(111)
 path = mpath.Path(track)
 patch = mpatches.PathPatch(path)
 ax.add_patch(patch)
+
+print("fertig")
