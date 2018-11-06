@@ -27,8 +27,6 @@ for i in range(cycles):
 
 #plot
 
-
-
 fig = plt.figure()
 ax = fig.add_subplot(111)
 path = mpath.Path(track)
