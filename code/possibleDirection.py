@@ -7,21 +7,21 @@ import math as m
 '''
 
 def possible_direction(position):
-    possible_move = np.zeros(3,3)      # empty matrix with possible direction
-    square = np.array(position[0], position[1])
-    if map(square) == 0:
+    possible_move = np.zeros([3, 3], order='C')      # empty matrix with possible direction
+    square = np.array([position[0], position[1]])
+    if map(square[0], square[1]) == 0:
         for x in range(0, 3):
             for y in range(0, 3):
                 if map(square + np.array([x - 1, y - 1])) == (0 or 2):
                     possible_move[x, y] = 1      # move is possible
 
-    if map(square) == 1:
+    if map(square[0], square[1]) == 1:
         for x in range(0, 3):
             for y in range(0, 3):
                 if map(square + np.array([x - 1, y - 1])) == (1 or 2):
                     possible_move[x, y] = 1      # move is possible
 
-    if map(square) == 2:
+    if map(square[0], square[1]) == 2:
         for x in range(0, 3):
             for y in range(0, 3):
                 if map(square + np.array([x - 1, y - 1])) == (0 or 1 or 2):
