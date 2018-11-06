@@ -8,7 +8,7 @@ def desired_direction(globalVector,position):
     desired = globalVector
 
     #choose a random angle
-    sigma = math.pi/8;
+    sigma = math.pi/2;
     randomAngle = np.random.normal(0,sigma);
 
     #construct rotation matrix

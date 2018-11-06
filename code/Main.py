@@ -8,12 +8,12 @@ import matplotlib.patches as mpatches
 from possibleDirection import possible_direction
 
 # Define Ant
-position = [0,0] #possible values: ints between 0 and 1600
-globalVector = np.array([10,10])
+position = [1600-2,1600-2] #possible values: ints between 0 and 1600
+globalVector = np.array([-800,-800])
 track = list()
 track.append(position)
 
-cycles = 100
+cycles = 10000
 
 # Main Loop
 
@@ -27,10 +27,17 @@ for i in range(cycles):
 
 #plot
 
+
+
 fig = plt.figure()
 ax = fig.add_subplot(111)
 path = mpath.Path(track)
 patch = mpatches.PathPatch(path)
 ax.add_patch(patch)
+
+ax.set_xlim([0,1600])
+ax.set_ylim([0,1600])
+
+fig.show()
 
 print("fertig")
