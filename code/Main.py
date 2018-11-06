@@ -30,12 +30,13 @@ for i in range(cycles):
 fig = plt.figure()
 ax = fig.add_subplot(111)
 path = mpath.Path(track)
-patch = mpatches.PathPatch(path)
+patch = mpatches.PathPatch(path, facecolor='none')
 ax.add_patch(patch)
 
 ax.set_xlim([0,1600])
 ax.set_ylim([0,1600])
 
-fig.show()
+plt.ioff()
+plt.show()
 
 print("fertig")
