@@ -13,19 +13,19 @@ def possible_direction(position):
     if config.map[square[0], square[1]] == 0:
         for x in range(0, 3):
             for y in range(0, 3):
-                if config.map[square[0] + (x-1), square[1] + (y-1)] == (0 or 2):
+                if (config.map[square[0] + (x-1), square[1] + (y-1)] == 0) or (config.map[square[0] + (x-1), square[1] + (y-1)] == 2) :
                     possible_move[x, y] = 1      # move is possible
 
     if config.map[square[0], square[1]] == 1:
         for x in range(0, 3):
             for y in range(0, 3):
-                if config.map[square[0] + (x-1), square[1] + (y-1)] == (1 or 2):
+                if (config.map[square[0] + (x - 1), square[1] + (y - 1)] == 1) or (config.map[square[0] + (x - 1), square[1] + (y - 1)] == 2):
                     possible_move[x, y] = 1      # move is possible
 
     if config.map[square[0], square[1]] == 2:
         for x in range(0, 3):
             for y in range(0, 3):
-                if config.map[square[0] + (x-1), square[1] + (y-1)] == (0 or 1 or 2):
+                if  (config.map[square[0] + (x-1), square[1] + (y-1)] == 0) or (config.map[square[0] + (x-1), square[1] + (y-1)] == 1) or (config.map[square[0] + (x-1), square[1] + (y-1)] == 2) :
                     possible_move[x, y] = 1      # move is possible
 
     possible_move[1, 1] = 0  # the ant is not allowed to stay on the same place
