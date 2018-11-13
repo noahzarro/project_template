@@ -3,11 +3,11 @@ import numpy as np
 import math
 
 
-def create_channel(start_position, end_position):
+def create_channel(start_position, end_position, channel_width):
 
     channel_direction = np.array([end_position[0] - start_position[0], end_position[1] - start_position[1]])
     drawing_position = start_position
-    channel_width = 10
+
 
     while drawing_position != end_position:
         correlation = np.zeros([3, 3])-2
