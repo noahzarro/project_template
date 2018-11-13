@@ -5,6 +5,7 @@ from createChannel import create_channel
 
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
 
+localWeight = 0.2
 map_size = 1600
 map = np.zeros([map_size, map_size], dtype=int, order='C')
 map[0, :] = 4        # Define border

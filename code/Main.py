@@ -27,7 +27,7 @@ for i in range(cycles):
     globalVector = globalVector - step
     track.append(position)
 
-#plot
+# Plot
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
