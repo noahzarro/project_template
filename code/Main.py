@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+import math
 import numpy as np
 from DesiredDirection import desired_direction
 from actualStep import actual_step
@@ -8,6 +8,7 @@ import matplotlib.patches as mpatches
 from possibleDirection import possible_direction
 import config as con
 from matplotlib.colors import ListedColormap
+
 
 # Define Ant
 position = [1, 1] # possible values: ints between 0 and 1599
@@ -25,6 +26,13 @@ for i in range(cycles):
     step = actual_step(desired, possible)
     position = [position[0] + step[0], position[1] + step[1]]
     globalVector = globalVector - step
+
+    # error in globalVector memory
+    max_error = math.pi / 1000
+    random_error = np.random.normal(0, max_error)
+    rotation_global = [[math.cos(random_error), -math.sin(random_error)],[math.sin(random_error), math.cos(random_error)]]
+    globalVector = np.matmul(rotation_global, globalVector)
+
     track.append(position)
 
 # Plot

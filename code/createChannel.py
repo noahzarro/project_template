@@ -53,9 +53,6 @@ def create_channel(start_position, end_position, channel_width):
             if point_to_draw[0] >= con.map_size - 1 or point_to_draw[1] >= con.map_size - 1:
                 continue
             con.map[point_to_draw[0], point_to_draw[1]] = 2
-            # local vector points right at the end of the channel
-            con.local_vector[point_to_draw[0], point_to_draw[1], 0] = max_cor_coordinates[0]-1
-            con.local_vector[point_to_draw[0], point_to_draw[1], 1] = max_cor_coordinates[1]-1
 
     # to be sure that the start_position is part of the channel for channel_width = 1 as well
     con.map[start_position[0], start_position[1]] = 1
