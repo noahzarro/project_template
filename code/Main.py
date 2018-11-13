@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import matplotlib.patches as mpatches
 from possibleDirection import possible_direction
+import config as con
+from matplotlib.colors import ListedColormap
 
 # Define Ant
 position = [1, 1] # possible values: ints between 0 and 1599
@@ -36,7 +38,9 @@ ax.add_patch(patch)
 ax.set_xlim([0,1600])
 ax.set_ylim([0,1600])
 
+cmap = ListedColormap(['w','b','r','y'])
 plt.ioff()
+ax.matshow(np.transpose(con.map), cmap = cmap)
 plt.show()
 
 print("fertig")
