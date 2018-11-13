@@ -39,8 +39,19 @@ ax.set_xlim([0,1600])
 ax.set_ylim([0,1600])
 
 cmap = ListedColormap(['w', 'b', 'r', 'y', 'k'])
-plt.ioff()
 ax.matshow(np.transpose(con.map), cmap = cmap)
+
+
+
+print("git")
+git = plt.figure()
+
+
+ay = git.add_subplot(121)
+az = git.add_subplot(122)
+ay.matshow(con.local_vector[:,:,0])
+az.matshow(con.local_vector[:,:,1])
+plt.ioff()
 plt.show()
 
 print("fertig")
