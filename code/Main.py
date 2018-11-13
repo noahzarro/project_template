@@ -38,7 +38,7 @@ ax.add_patch(patch)
 ax.set_xlim([0,1600])
 ax.set_ylim([0,1600])
 
-cmap = ListedColormap(['w','b','r','y'])
+cmap = ListedColormap(['w', 'b', 'r', 'y', 'k'])
 plt.ioff()
 ax.matshow(np.transpose(con.map), cmap = cmap)
 plt.show()
