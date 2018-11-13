@@ -15,12 +15,6 @@ def desired_direction(globalVector, position):
     else:
         globalVector = globalVector
 
-    norm = np.linalg.norm(localVector)
-    if norm != 0:
-        localVector = localVector / norm
-    else:
-        localVector = localVector
-
     desired = globalVector*(1-con.localWeight) + localVector*con.localWeight
 
     norm = np.linalg.norm(desired)
@@ -30,7 +24,7 @@ def desired_direction(globalVector, position):
         desired = desired
 
     # choose a random angle
-    sigma = math.pi/2;
+    sigma = math.pi/8;
     randomAngle = np.random.normal(0, sigma);
 
     # construct rotation matrix
