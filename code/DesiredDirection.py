@@ -7,7 +7,7 @@ def desired_direction(globalVector, position):
     # returns vector pointing in desired direction
 
     # calculate desired Vector depending on globalVector and localVector
-    localVector = con.local[position[0],position[1]]
+    localVector = con.local_vector[position[0],position[1]]
 
     norm = np.linalg.norm(globalVector)
     if norm != 0:
