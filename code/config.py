@@ -13,7 +13,7 @@ end_position = [1, 800]
 
 # channel exit
 channel_exit_influence = 100
-exit_direction = [1, 0] # enter normed vector here
+exit_direction = [1, 0]     # enter normed vector here
 
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
 map = np.zeros([map_size, map_size], dtype=int, order='C')
