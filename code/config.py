@@ -10,7 +10,7 @@ resolution = 20
 
 # channel
 start_position = [1, 1]
-end_position = [1, 800]
+end_position = [1, 200]
 
 # nest
 nest_position = math.floor(map_size/2)
