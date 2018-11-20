@@ -22,6 +22,11 @@ channel_exit_influence = 300
 exit_direction = [1, 0]     # enter normed vector here
 exit_push_strength = 5
 
+# object
+object_positions = [[50, 50], [100, 50], [150, 50]]
+object_influence = 50
+object_push_strength = 5
+
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
 map = np.zeros([map_size, map_size], dtype=int, order='C')
 local_vector = np.zeros([map_size, map_size, 2])

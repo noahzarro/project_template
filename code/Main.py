@@ -67,8 +67,8 @@ ay.set_ylim([0,1600])
 az.set_xlim([0,1600])
 az.set_ylim([0,1600])
 
-ay.matshow(np.transpose(con.local_vector[:,:,0]))
-az.matshow(np.transpose(con.local_vector[:,:,1]))
+ay.matshow(np.transpose(con.local_vector[:,:,0]), cmap = 'bwr')
+az.matshow(np.transpose(con.local_vector[:,:,1]), cmap = 'bwr')
 
 plt.ioff()
 plt.show()
