@@ -57,8 +57,16 @@ git = plt.figure()
 
 ay = git.add_subplot(121)
 az = git.add_subplot(122)
-ay.matshow(con.local_vector[:,:,0])
-az.matshow(con.local_vector[:,:,1])
+
+ay.set_xlim([0,1600])
+ay.set_ylim([0,1600])
+
+az.set_xlim([0,1600])
+az.set_ylim([0,1600])
+
+ay.matshow(np.transpose(con.local_vector[:,:,0]))
+az.matshow(np.transpose(con.local_vector[:,:,1]))
+
 plt.ioff()
 plt.show()
 

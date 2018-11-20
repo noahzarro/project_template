@@ -4,16 +4,23 @@ import math
 from editLocalVector import edit_local_vector
 
 # Map parameter
-localWeight = 0.2
+localWeight = 0.9
 map_size = 1600
 resolution = 20
-nest_position = math.floor(map_size/2)
+
+# channel
 start_position = [1, 1]
 end_position = [1, 800]
 
+# nest
+nest_position = math.floor(map_size/2)
+nest_influence = 300
+nest_pull_strength = 5
+
 # channel exit
-channel_exit_influence = 100
+channel_exit_influence = 300
 exit_direction = [1, 0]     # enter normed vector here
+exit_push_strength = 5
 
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
 map = np.zeros([map_size, map_size], dtype=int, order='C')
