@@ -10,12 +10,12 @@ resolution = 20
 
 # channel
 start_position = [1, 1]
-end_position = [1, 200]
+end_position = [400, 400]
 
 # nest
 nest_position = math.floor(map_size/2)
-nest_influence = 300
-nest_pull_strength = 5
+nest_influence = 100
+nest_pull_strength = 10
 
 # channel exit
 channel_exit_influence = 300
