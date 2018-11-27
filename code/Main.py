@@ -9,7 +9,7 @@ from possibleDirection import possible_direction
 import config as con
 from matplotlib.colors import ListedColormap
 
-ant_number = 20
+ant_number = 1
 tracks = list() # save track of each ant
 
 fig = plt.figure()
@@ -20,6 +20,8 @@ ax.matshow(np.transpose(con.map), cmap = cmap)
 
 ax.set_xlim([0,1600])
 ax.set_ylim([0,1600])
+
+max_error = math.pi / 1000
 
 for j in range(ant_number):
 
@@ -41,7 +43,6 @@ for j in range(ant_number):
         globalVector = globalVector - step
 
         # error in globalVector memory
-        max_error = math.pi / 1000
         random_error = np.random.normal(0, max_error)
         rotation_global = [[math.cos(random_error), -math.sin(random_error)],[math.sin(random_error), math.cos(random_error)]]
         globalVector = np.matmul(rotation_global, globalVector)
