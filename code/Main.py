@@ -9,7 +9,7 @@ from possibleDirection import possible_direction
 import config as con
 from matplotlib.colors import ListedColormap
 
-ant_number = 20
+ant_number = 5
 tracks = list() # save track of each ant
 
 fig = plt.figure()
@@ -47,6 +47,9 @@ for j in range(ant_number):
         globalVector = np.matmul(rotation_global, globalVector)
 
         tracks[j].append(position)
+        if con.map[position[0], position[1]] == 3:
+            break
+
 
     # Plot
 
