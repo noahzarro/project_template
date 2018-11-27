@@ -48,6 +48,9 @@ for j in range(ant_number):
         globalVector = np.matmul(rotation_global, globalVector)
 
         tracks[j].append(position)
+        if con.map[position[0], position[1]] == 3:
+            break
+
 
     # Plot
 
