@@ -17,13 +17,13 @@ end_position = [1, 799]
 
 # nest
 nest_position = math.floor(map_size/2)
-nest_influence = 300
-nest_pull_strength = 5
+nest_influence = 100
+nest_pull_strength = 10
 
 # channel exit
 channel_exit_influence = 300
 exit_direction = [1, 0]     # enter normed vector here
-exit_push_strength = 2
+exit_push_strength = 5
 
 # object
 object_positions = [[100, 800], [200, 200], [300, 300]]
