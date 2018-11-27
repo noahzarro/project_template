@@ -11,6 +11,7 @@ resolution = 20
 # channel
 start_position = [1, 1]
 end_position = [400, 400]
+channel_length = math.sqrt((start_position[0] - end_position[0])**2 + (start_position[1] - end_position[1])**2)
 
 # nest
 nest_position = math.floor(map_size/2)
