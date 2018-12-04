@@ -3,7 +3,7 @@ from createChannel import create_channel
 import math
 from editLocalVector import edit_local_vector
 from createObject import create_object
-from defineFamiliarPhath import define_familiar_path
+from defineFamiliarPath import define_familiar_path
 
 
 # Map parameter
@@ -27,14 +27,14 @@ exit_direction = [1, 0]     # enter normed vector here
 exit_push_strength = 5
 
 # object
-object_positions = [[100, 800], [200, 200], [300, 300]]
+object_positions = [[100, 800], [150, 850], [200, 900]]
 object_influence = 100
 object_push_strength = 5
-local_vector_for_objects = [[1, 1], [1, 1], [1, 1]]
+object_path_distance_influence = 0.1
 
 # familiar path
-points_on_path = [[100, 100], [300, 900]]
-
+start_of_path = [10, 800]
+end_of_path = [300, 1000]
 
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
 map = np.zeros([map_size, map_size], dtype=int, order='C')
@@ -54,7 +54,9 @@ for x in range(- math.floor(resolution / 2) + 1, math.floor(resolution/2) + 1):
     for y in range(- math.floor(resolution / 2) + 1, math.floor(resolution/2) + 1):
         map[nest_position + x, nest_position + y] = 3
 
+# define familiar path with objects and edit local vector
 create_object()
+define_familiar_path(start_of_path, end_of_path)
 
 edit_local_vector()
 
