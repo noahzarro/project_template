@@ -7,7 +7,7 @@ from defineFamiliarPath import define_familiar_path
 
 
 '''
-# Here all parameters can be changed for different simulations
+Here all parameters can be changed for different simulations
 '''
 
 # ant
@@ -50,7 +50,7 @@ start_of_path = [1, 1]       # define a path direction but has only influences t
 end_of_path = [1, 1]
 
 '''
-# The following code should not be changed
+The following code should not be changed
 '''
 
 # Define Map (0 desert, 1 channel, 2 channel entry/exit, 3 home, 4 object)
