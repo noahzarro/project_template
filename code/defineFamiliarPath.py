@@ -4,6 +4,7 @@ import math
 
 
 def define_familiar_path(start_of_path, end_of_path):
+
     path_direction = [end_of_path[0] - start_of_path[0],        # creates a not normalized path vector
                       end_of_path[1] - start_of_path[1]]
     p_vec_norm = math.sqrt(path_direction[0] ** 2 + path_direction[1] ** 2)     # calculate norm

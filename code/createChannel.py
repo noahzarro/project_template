@@ -8,11 +8,10 @@ def create_channel(start_position, end_position, channel_width):
     channel_direction = np.array([end_position[0] - start_position[0], end_position[1] - start_position[1]])
     drawing_position = start_position
 
-
     while drawing_position != end_position:
         correlation = np.zeros([3, 3])-2
         max_correlation = -2
-        max_cor_coordinates = [0,0]
+        max_cor_coordinates = [0, 0]
 
         # calculate the new square of the channel
         for x in range(-1, 2):
@@ -26,13 +25,15 @@ def create_channel(start_position, end_position, channel_width):
                     max_cor_coordinates = [x,y]
 
         # the new square of the channel is:
-        drawing_position = [drawing_position[0] + max_cor_coordinates[0], drawing_position[1] + max_cor_coordinates[1]]
-        channel_direction = [channel_direction[0] - max_cor_coordinates[0], channel_direction[1] - max_cor_coordinates[1]]
+        drawing_position = [drawing_position[0] + max_cor_coordinates[0],
+                            drawing_position[1] + max_cor_coordinates[1]]
+        channel_direction = [channel_direction[0] - max_cor_coordinates[0],
+                             channel_direction[1] - max_cor_coordinates[1]]
 
         # draw the channel
         for x in range(- math.floor(channel_width / 2) + 1, math.floor(channel_width/2) + 1):
             for y in range(- math.floor(channel_width / 2) + 1, math.floor(channel_width/2) + 1):
-                point_to_draw = [drawing_position[0] + x , drawing_position[1] + y]
+                point_to_draw = [drawing_position[0] + x, drawing_position[1] + y]
                 # skip points out of map range
                 if point_to_draw[0] <= 0 or point_to_draw[1] <= 0:
                     continue
