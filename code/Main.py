@@ -56,7 +56,7 @@ for j in range(ant_number):
     # Plot
 
     path = mpath.Path(tracks[j])
-    patch = mpatches.PathPatch(path, facecolor='none')
+    patch = mpatches.PathPatch(path, facecolor='none', linewidth=0.25)
     ax.add_patch(patch)
 
 print("git")

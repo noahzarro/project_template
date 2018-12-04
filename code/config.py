@@ -15,6 +15,8 @@ ant_number = 20      # how many ants are simulated
 ant_start_position = [1, 1598]       # starting position (possible values: ints between 1 and 1598)
 global_vector_start = np.array([800, -800])      # global vector at the starting position
 steps = 2000       # maximal steps the ant does
+
+# random factors for the ant to be natural
 sigma = math.pi / 4       # sigma for random angle distribution in desiredDirection
 max_memory_error = math.pi / 1000       # maximal error per step of the global vector memory
 
