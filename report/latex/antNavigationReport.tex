@@ -6,15 +6,25 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{epstopdf}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage{natbib}
+\bibliographystyle{unsrtnat}
+\renewcommand\bibsection{\section{\refname}}
+
 \usepackage{amssymb, amsmath}
 \usepackage[procnames]{listings}
 \usepackage{color}
+\usepackage[english]{varioref}
+
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 \title{Vector based navigation of desert ants}
 \author{Josua Graf, Noah Zarro}
 \date{date} 
+
+\graphicspath{ {./images/} }
 
 \definecolor{keywords}{RGB}{255,0,90}
 \definecolor{comments}{RGB}{0,0,113}
@@ -97,7 +107,47 @@
 
 
 \section{Abstract}
-\begin{lstlisting}
+
+\section{Individual contributions}
+
+\section{Introduction and Motivations}
+	\subsection{Motivation}
+		we wanted to do an unconventional poject, simulating emergency situations has been done multiple times
+	\subsection{Base Paper}
+		description of base paper (who did it, roughly what was it all about)
+\section{Description of the Model}
+	\subsection{Behaviour of the ant}
+		how did Wehner think global and local vector worked (\cite{wehner})
+	\subsection{Conducted experiments}
+		description of the experiments Wehner conducted (explaination of channel, cylinder, etc.)
+\section{Implementation}
+	with code examples
+	\subsection{Main Concept}
+		we use an iterative aproach, calculate local and global vector new in every step, merge them together(explain how). Save steps, plot them
+	\subsection{Global Vector}
+		explain how it gets calculated, and randomized
+	\subsection{Local Vector}
+		explain how it gets calculated and influenced by surroundings
+\section{Simulation Results and Discussion}
+	\subsection{Simulation Results}
+		what did we get, is it the same
+	\subsection{Discussion}
+		what was different, probably the randomization was no as in real life
+\section{Summary and Outlook}
+	\subsection{Summary}
+		it worked pretty well, Wehner did a good job
+	\subsection{Outlook}
+		we probably will not continue our research about desert ants, maybe Wehner will
+%\section{References}
+	\bibliography{bibliography}
+\section{Latex-Stuff}
+
+Beispielverweisung:
+
+Hier wird auf dieses Bild verwiesen (fig.~\vref{fig:examplefigure})
+
+Python Code:
+\begin{lstlisting}[caption=Python code example]
 import numpy as np
 
 # show numbers 0-9
@@ -105,27 +155,26 @@ print ('Numbers from 0-9')
 for i in range(10):
 	print(i)
 \end{lstlisting}
-\section{Individual contributions}
-
-\section{Introduction and Motivations}
-
-\section{Description of the Model}
-
-\section{Implementation}
-
-\section{Simulation Results and Discussion}
-
-\section{Summary and Outlook}
-
-\section{References}
 
 
+\begin{figure}[h!]
+	\includegraphics[width=0.5\textwidth]{example.png}
+	\caption{Beispielbild, in Ordner images}
+	\label{fig:examplefigure}
+\end{figure}
+
+Beispielliste:
+
+\begin{itemize}
+	\item erster Eintrag
+	\item zweiter Eintrag
+\end{itemize}
 
 
 
 
 \end{document}  
 
-
+\printbibliography
 
  
