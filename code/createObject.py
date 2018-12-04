@@ -22,15 +22,3 @@ def create_object():
                     continue
                 con.map[point_to_draw[0], point_to_draw[1]] = 4
 
-        # local vector around the object
-        for x in range(-math.floor(con.object_influence/2), math.floor(con.object_influence/2)):
-            y_border = math.floor(math.sqrt(math.floor(con.object_influence/2) ** 2 - x ** 2))
-            for y in range(- y_border, y_border):
-                local_point = [ix + x, iy + y]
-                # skip points out of map range
-                if point_to_draw[0] <= 0 or point_to_draw[1] <= 0:
-                    continue
-                if point_to_draw[0] >= con.map_size - 1 or point_to_draw[1] >= con.map_size - 1:
-                    continue
-                con.local_vector[local_point[0], local_point[1], 0] = con.local_vector_for_objects[i][0]
-                con.local_vector[local_point[0], local_point[1], 1] = con.local_vector_for_objects[i][1]
