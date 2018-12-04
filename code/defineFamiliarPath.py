@@ -8,6 +8,8 @@ def define_familiar_path(start_of_path, end_of_path):
     path_direction = [end_of_path[0] - start_of_path[0],        # creates a not normalized path vector
                       end_of_path[1] - start_of_path[1]]
     p_vec_norm = math.sqrt(path_direction[0] ** 2 + path_direction[1] ** 2)     # calculate norm
+    if p_vec_norm == 0:     # if no path return
+        return
     path_vector = [path_direction[0] / p_vec_norm, path_direction[1] / p_vec_norm]      # normalize
     path_slope = path_vector[1] / path_vector[0]        # calculate the slope of the path straight
     vertical_slope = -1 / path_slope        # slope product of two verticals is -1
