@@ -5,7 +5,6 @@ from editLocalVector import edit_local_vector
 from createObject import create_object
 from defineFamiliarPath import define_familiar_path
 
-
 '''
 # Insert here testfile to run test
 from <testfile> import *
