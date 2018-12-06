@@ -114,6 +114,8 @@
 	\subsection{Motivation}
 		we wanted to do an unconventional project, simulating emergency situations has been done multiple times. Expanding horizon
 	\subsection{Base Paper}
+		we wanted to do an unconventional poject, simulating emergency situations has been done multiple times. Expanding horizon
+	\subsection{Hypothesis}
 		description of base paper (who did it, roughly what was it all about)
 \section{Description of the Model} %Noah
 	\subsection{Behavior of the ant}
@@ -125,7 +127,7 @@
 	\subsection{Main Concept}
 		%we use an iterative approach, calculate local and global vector new in every step, merge them together(explain how). Save steps, plot them
 		Our goal was to set up a simulation environment which was as general as possible, so we could easy switch between the test cases. The simulation is actually a huge loop, where in every iteration the ant does a step on a grid. It can just move horizontally, vertically and diagonal. This of course limits our ant, but if we simulate it with a big enough resolution it does not really matter. The ant can not reach every point on the map, there are several restrictions. First there is the channel, which can only be entered at specified channel exit or enter points. On the other hand the ant can not leave the map, so we constructed a virtual wall around the whole map, which it can not pass. Finally there is the nest, which we placed in the middle of the map.
-		
+
 In every iteration, the desired direction of the ant gets calculated according to the global and local vector in the \texttt{desired\_direction} function. Then we calculate all possible directions in the \texttt{possible\_direction} function. At the end the function \texttt{actual\_step} lets the ant walk one step and the global vector gets adjusted. If the ant did a certain amount of steps the simulation stops and the path gets plotted.
 
 Our whole simulation environment is highly configurable, in the \texttt{conifg.py} file one can import any test file, in which all things like the map configuration, the start position of the ant etc. can be specified.
