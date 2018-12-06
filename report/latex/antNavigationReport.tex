@@ -106,10 +106,12 @@
 
 
 
-\section{Abstract}
+\section{Abstract} %Noah
+	In this project we simulated the behavior of desert ants, as stated by R. S. Wehner in his report (\cite{wehner}). He conducted experiments with real ants and proposed a theory how these ants handle the orientation in the desert. We used his results to simulate an ant, which behaves as Wehner stated in his thesis and conducted his experiments again in simulation. It seams that our simulation matches the results of his real tests pretty well.
+\newpage
 
-\section{Individual contributions}
-
+\section{Individual contributions} %Noah
+	N.Z and J.G set up a basic concept for the simulation, N.Z. and J.G. programmed the simulation, J.G. run the simulation, N.Z and J.G. wrote the report.
 \section{Introduction and Motivations} %Josua
 	\subsection{Motivation}
 		we wanted to do an unconventional project, simulating emergency situations has been done multiple times. Expanding horizon
@@ -123,7 +125,6 @@
 	\subsection{Conducted experiments}
 		description of the experiments Wehner conducted (explanation of channel, cylinder, etc.)
 \section{Implementation} % Noah
-	with code examples
 	\subsection{Main Concept}
 		%we use an iterative approach, calculate local and global vector new in every step, merge them together(explain how). Save steps, plot them
 		Our goal was to set up a simulation environment which was as general as possible, so we could easy switch between the test cases. The simulation is actually a huge loop, where in every iteration the ant does a step on a grid. It can just move horizontally, vertically and diagonal. This of course limits our ant, but if we simulate it with a big enough resolution it does not really matter. The ant can not reach every point on the map, there are several restrictions. First there is the channel, which can only be entered at specified channel exit or enter points. On the other hand the ant can not leave the map, so we constructed a virtual wall around the whole map, which it can not pass. Finally there is the nest, which we placed in the middle of the map.
@@ -133,9 +134,24 @@ In every iteration, the desired direction of the ant gets calculated according t
 Our whole simulation environment is highly configurable, in the \texttt{conifg.py} file one can import any test file, in which all things like the map configuration, the start position of the ant etc. can be specified.
 	\subsection{Global Vector}
 		%explain how it gets calculated, and randomized
-		The global vector starts with an initial value, which can be edited in the test file. In every iteration of the main loop the step conducted by the ant gets subtracted form the global vector. Additionally to model the imperfectness of the ants 0.1 mg brain we introduced two random factors. One gives credit to the fact, that a normal ant never walks in a straight line but rather zig-zags its way home. For this reason, before a step is executed by the ant, the step gets randomly rotated, but with a gaussian distribution around the straight forward direction. The second randomization mirrors the fact that an ant never can memorize exactly how many millimeter it walked north or east. Thus the global vector gets slightly rotated randomly after every step, which means the ant does not exactly remember which way it took to get to its current position.
+		The global vector starts with an initial value, which can be edited in the test file. In every iteration of the main loop the step conducted by the ant gets subtracted form the global vector. Additionally to model the imperfectness of the ants 0.1 mg brain we introduced two random factors. One gives credit to the fact, that a normal ant never walks in a straight line but rather zig-zags its way home. For this reason before a step is executed by the ant, the step gets randomly rotated, but with a gaussian distribution around the straight forward direction, see lst~\vref{lst:randomization}. The second randomization mirrors the fact that an ant never can memorize exactly how many millimeter it walked north or east. Thus the global vector gets slightly rotated randomly after every step, which means the ant does not exactly remember which way it took to get to its current position.
+		
+		
+		
+\begin{lstlisting}[caption={Randomization of desired step},label=lst:randomization]
+# choose a random angle
+sigma = con.sigma
+randomAngle = np.random.normal(0, sigma)
+
+# construct rotation matrix
+rotationMatrix = [[math.cos(randomAngle), -math.sin(randomAngle)], [math.sin(randomAngle), 			   math.cos(randomAngle)]]
+
+# rotate vector
+rotated = np.matmul(rotationMatrix, desired)
+\end{lstlisting}
+
 	\subsection{Local Vector}
-		%explain how it gets calculated and influenced by surroundings
+	%explain how it gets calculated and influenced by surroundings
 		The local vector gets calculated every iteration and depends on the close surroundings of the ant. The influence and the position of these surroundings can be configured in the test files. The channel exit for example pushes the ant to the south. All these objects have a circular area of influence and the influence lowers quadratically with the ants distance to the object. All influences of all objects get summed up to the local vector and are merged with the global vector to the desired direction with the following formula:
 		\begin{align*}
 			desired\_direction = local\_vector * local\_weight + global\_vector * (1-local\_weight)
@@ -180,7 +196,6 @@ Beispielliste:
 	\item erster Eintrag
 	\item zweiter Eintrag
 \end{itemize}
-
 
 
 
