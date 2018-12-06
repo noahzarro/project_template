@@ -10,7 +10,7 @@ from defineFamiliarPath import define_familiar_path
 # Insert here testfile to run test
 from <testfile> import *
 '''
-from Test_1a import *
+from test_Ba import *
 
 '''
 The following code should not be changed
