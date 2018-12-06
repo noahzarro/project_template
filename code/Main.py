@@ -15,7 +15,7 @@ tracks = list()     # save track of each ant
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
-cmap = ListedColormap(['w', 'b', 'r', 'y', 'k'])
+cmap = ListedColormap(['w', 'b', 'y', 'r', 'k'])
 ax.matshow(np.transpose(con.map), cmap=cmap)
 
 ax.set_xlim([0, con.map_size])
