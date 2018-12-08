@@ -17,6 +17,7 @@
 \usepackage[procnames]{listings}
 \usepackage{color}
 \usepackage[english]{varioref}
+\usepackage{wrapfig}
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
@@ -121,9 +122,30 @@
 		description of base paper (who did it, roughly what was it all about)
 \section{Description of the Model} %Noah
 	\subsection{Behavior of the ant}
-		how did Wehner think global and local vector worked (\cite{wehner})
+		For our simulation we aimed to implement our model as closely as possible to the postulated model by Collett and his participants (\cite{wehner}). Their model splits the navigation of the ant in two parts. First, if there are no known landmarks in sight  (which is the usual case in the desert, the ants natural habitat) the ants orient themselves with a process named `path integration'. An ant leaving their nest to gather food counts each step it takes and measures its direction with aid of the sunlight, which it uses as a sort of compass. Like this it is always aware of its position relative to the nest and is able to find its way home. With this practice it is also less vulnerable to changes in the environment. The integrated value, respectively its negative which is pointing to the nest, is called the \texttt{global vector} by Collett and his colleagues. However, this practice becomes unreliable if the sun is not visible or the ant makes a mistake counting its steps. Therefore the ant also uses a different form of finding their way. It uses known landmarks, as for example rocks, bushes or other static objects for his orientation. Collett uses the word \texttt{local vector} to describe this form of orientation. Here it is important to say that as Collett says he does not calculate its \texttt{local vector} according to the direction of travel, like ''after the gray rock go left'', but relative to the cardinal direction, like ''after the gray rock go south''.
 	\subsection{Conducted experiments}
-		description of the experiments Wehner conducted (explanation of channel, cylinder, etc.)
+	
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{experiments_setup.png}
+	\caption{Test setup and some experiments conducted by Colletts. \cite{wehner}}
+	\label{fig:setup}
+\end{wrapfigure}
+
+		To prove their theory the four researchers conducted several experiments. They built a training ground for the ants, where they had a nest, a feeding ground and a so called 'channel'. The channel was a tunnel dug in the ground just deeply enough that the ants could not see it form the surface. The ants were left in this training area, where they continuously gathered food and brought it back to the nest. So they got used to the setup and memorized the local landmarks and therefore set up their \texttt{local vector}. After a few days training the researchers started to conduct several different experiments, where they changed the setup partly. In some experiments they changed the the length and position of the channel, which disordered the ant's \texttt{local vector} and in some other cases they picked up the ant at their nest or on their way home and released it somewhere else, in order to give them a false estimation of their position according to the \texttt{global vector}, see~\vref{fig:setup}
+
+
+\begin{wrapfigure}{l}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{cylinders.png}
+	\caption{Training ground with cylinders.}
+	\label{fig:cylinders}
+\end{wrapfigure}
+
+
+	Furthermore the group conducted an other kind of experiments, where they used no channel, but six highly visible black cylinders. They formed some kind of alley, where the ants had to get trough in order to reach their food. With this arrangement the ants were trained again, see~\vref{cylinders}. In the experiment conducted with those ants, they were picked up at the nest and released them at the feeding station.
+		
+
+
+
 \section{Implementation} % Noah
 	\subsection{Main Concept}
 		%we use an iterative approach, calculate local and global vector new in every step, merge them together(explain how). Save steps, plot them
