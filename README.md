@@ -37,5 +37,6 @@ Agent-Based Model, but we are not yet sure
 
 # Reproducibility
 
-(step by step instructions to reproduce your results. *Keep in mind that people reading this should accomplish to reproduce your work within 10 minutes. It needs to be self-contained and easy to use*. e.g. git clone URL_PROY; cd URL_PROY; python3 main.py --light_test (#--light test runs in less than 5minutes with up to date hardware)) 
+1. run code\Main.py, a graph opens, showing the path several ants took with the testcase Ba as described in the report.
+2. If you want to change the testcase, just change line 12 in code\Config.py to whatever testfile you want. All possible testfiles lay in the folder code.
 
