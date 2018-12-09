@@ -18,6 +18,7 @@
 \usepackage{color}
 \usepackage[english]{varioref}
 \usepackage{wrapfig}
+\usepackage{pdfpages}
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
@@ -96,7 +97,6 @@
 % IMPORTANT
 % you MUST include the ETH declaration of originality here; it is available for download on the course website or at http://www.ethz.ch/faculty/exams/plagiarism/index_EN; it can be printed as pdf and should be filled out in handwriting
 
-
 %%%%%%%%%% Table of content %%%%%%%%%%%%%%%%%
 
 \tableofcontents
@@ -108,18 +108,20 @@
 
 
 \section{Abstract} %Noah
-	In this project we simulated the behavior of desert ants, as stated by R. S. Wehner in his report (\cite{wehner}). He conducted experiments with real ants and proposed a theory how these ants handle the orientation in the desert. We used his results to simulate an ant, which behaves as Wehner stated in his thesis and conducted his experiments again in simulation. It seams that our simulation matches the results of his real tests pretty well.
+	In this project we simulated the behavior of desert ants, as stated by Collett in his report (\cite{wehner}). He conducted experiments with real ants and proposed a theory how these ants handle the orientation in the desert. We used his results to simulate an ant, which behaves as Collett stated in his thesis and conducted his experiments again in simulation. With our Simulation we got results which are very close to Collett's own research.
 \newpage
 
 \section{Individual contributions} %Noah
 	N.Z and J.G set up a basic concept for the simulation, N.Z. and J.G. programmed the simulation, J.G. run the simulation, N.Z and J.G. wrote the report.
+	
 \section{Introduction and Motivations} %Josua
 	\subsection{Motivation}
-		Desert ants (\textit{Cataglyphis}) has a difficult task to navigate since there natural habitat has not much landmarks helping to find there way. Different scientific papers (\cite{mueller}), (\cite{wehner}), (\cite{knaden}) are postulating that desert ants use path integration as one component of there navigation. Because many technical applications are inspired by nature it is of high interest to have a clear idea how ants navigate in a unrecognizable landscape like desert. We could imagine a technical use in satellite steering or the navigation of evacuation robots in. 
+		Desert ants (\textit{Cataglyphis}) have a difficult task to navigate since their natural habitat has not much landmarks helping to find their way. Different scientific papers (\cite{mueller}), (\cite{wehner}), (\cite{knaden}) are postulating that desert ants use path integration as one component of there navigation. Because many technical applications are inspired by nature it is of high interest to have a clear idea how ants navigate in a unrecognizable landscape like desert. We could imagine a technical use in satellite steering or the navigation of evacuation robots in. 
 	\subsection{Base Paper}
 		This project is based on the paper "Local and global vectors in desert ant navigation" (\cite{wehner}). Through simulating an ant which follows the concepts of local and global vector described by \cite{wehner} and comparison with the actual behavior we wanted to find out if the concept postulated is complete or needs  adjustments. The goal was to implement the ant following the concepts as accurately as possible, then simulate the same test setup as it was used for the paper and compare the simulated plots with the plots from the experiments. 
 	\subsection{Hypothesis}
 		description of base paper (who did it, roughly what was it all about)
+		
 \section{Description of the Model} %Noah
 	\subsection{Behavior of the ant}
 		For our simulation we aimed to implement our model as closely as possible to the postulated model by Collett and his participants (\cite{wehner}). Their model splits the navigation of the ant in two parts. First, if there are no known landmarks in sight  (which is the usual case in the desert, the ants natural habitat) the ants orient themselves with a process named `path integration'. An ant leaving their nest to gather food counts each step it takes and measures its direction with aid of the sunlight, which it uses as a sort of compass. Like this it is always aware of its position relative to the nest and is able to find its way home. With this practice it is also less vulnerable to changes in the environment. The integrated value, respectively its negative which is pointing to the nest, is called the \texttt{global vector} by Collett and his colleagues. However, this practice becomes unreliable if the sun is not visible or the ant makes a mistake counting its steps. Therefore the ant also uses a different form of finding their way. It uses known landmarks, as for example rocks, bushes or other static objects for his orientation. Collett uses the word \texttt{local vector} to describe this form of orientation. Here it is important to say that as Collett says he does not calculate its \texttt{local vector} according to the direction of travel, like ''after the gray rock go left'', but relative to the cardinal direction, like ''after the gray rock go south''.
@@ -131,7 +133,7 @@
 	\label{fig:setup}
 \end{wrapfigure}
 
-		To prove their theory the four researchers conducted several experiments. They built a training ground for the ants, where they had a nest, a feeding ground and a so called 'channel'. The channel was a tunnel dug in the ground just deeply enough that the ants could not see it form the surface. The ants were left in this training area, where they continuously gathered food and brought it back to the nest. So they got used to the setup and memorized the local landmarks and therefore set up their \texttt{local vector}. After a few days training the researchers started to conduct several different experiments, where they changed the setup partly. In some experiments they changed the the length and position of the channel, which disordered the ant's \texttt{local vector} and in some other cases they picked up the ant at their nest or on their way home and released it somewhere else, in order to give them a false estimation of their position according to the \texttt{global vector}, see~\vref{fig:setup}
+		To prove their theory the four researchers conducted several experiments. They built a training ground for the ants, where they had a nest, a feeding ground and a so called 'channel'. The channel was a tunnel dug in the ground just deeply enough that the ants could not see it form the surface. The ants were left in this training area, where they continuously gathered food and brought it back to the nest. So they got used to the setup and memorized the local landmarks and therefore set up their \texttt{local vector}. After a few days training the researchers started to conduct several different experiments, where they changed the setup partly. In some experiments they changed the the length and position of the channel, which disordered the ant's \texttt{local vector} and in some other cases they picked up the ant at their nest or on their way home and released it somewhere else, in order to give them a false estimation of their position according to the \texttt{global vector}, see Figure~\vref{fig:setup}
 
 
 \begin{wrapfigure}{l}{0.4\textwidth}
@@ -141,7 +143,7 @@
 \end{wrapfigure}
 
 
-	Furthermore the group conducted an other kind of experiments, where they used no channel, but six highly visible black cylinders. They formed some kind of alley, where the ants had to get trough in order to reach their food. With this arrangement the ants were trained again, see~\vref{cylinders}. In the experiment conducted with those ants, they were picked up at the nest and released them at the feeding station.
+	Furthermore the group conducted an other kind of experiments, where they used no channel, but six highly visible black cylinders. They formed some kind of alley, where the ants had to get trough in order to reach their food. With this arrangement the ants were trained again, see Figure~\vref{fig:cylinders}. In the experiment conducted with those ants, they were picked up at the nest and released them at the feeding station.
 		
 
 
@@ -185,41 +187,10 @@ rotated = np.matmul(rotationMatrix, desired)
 		what was different, probably the randomization was no as in real life
 \section{Summary and Outlook} %Noah
 	\subsection{Summary}
-		it worked pretty well, Wehner did a good job, his experiments corresponds to our simulation, which was based on his theory. We do not know if its biologically correct
+		The results of our Simulation correlate quite well to the results Collett received with real ants. This leads to the conclusion that his model mirrors the behavior of the ants really precisely. The greatest difference between their experiments and our simulation is the behavior of the ants if they have no global vector, which means they have been caught at their nest. The real ants started to walk around randomly and tried to find a familiar landmark or something which helped them to get back their orientation. In the simulation if there was no global vector and also no landmarks in sight, therefore also no local vector the ants just stood still. So there must be also some random element in their orientation if the have no other help. This was not described in Colletts paper \cite{wehner}, but it could also be argued that this kind of behavior was quite obvious and therefore they did not describe it.
 	\subsection{Outlook}
-		we probably will not continue our research about desert ants, maybe Wehner will
+		The subject of desert ant orientation is really interesting, but does not really fit in our studies plan. So we will probably not continue our research in this topic. But generally the subject will surely be investigated more, because learning of nature is always promising and can lead to major technological discoveries. 
 \bibliography{bibliography}
-\section{Latex-Stuff}
-
-Beispielverweisung:
-
-Hier wird auf dieses Bild verwiesen (fig.~\vref{fig:examplefigure})
-
-Python Code:
-\begin{lstlisting}[caption=Python code example]
-import numpy as np
-
-# show numbers 0-9
-print ('Numbers from 0-9')
-for i in range(10):
-	print(i)
-\end{lstlisting}
-
-
-\begin{figure}[h!]
-	\includegraphics[width=0.5\textwidth]{example.png}
-	\caption{Beispielbild, in Ordner images}
-	\label{fig:examplefigure}
-\end{figure}
-
-Beispielliste:
-
-\begin{itemize}
-	\item erster Eintrag
-	\item zweiter Eintrag
-\end{itemize}
-
-
 
 \end{document}  
 
