@@ -19,6 +19,8 @@
 \usepackage[english]{varioref}
 \usepackage{wrapfig}
 \usepackage{pdfpages}
+\usepackage{subfigure}
+\usepackage{float}
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
@@ -97,6 +99,11 @@
 % IMPORTANT
 % you MUST include the ETH declaration of originality here; it is available for download on the course website or at http://www.ethz.ch/faculty/exams/plagiarism/index_EN; it can be printed as pdf and should be filled out in handwriting
 
+
+
+\includepdf[pages={1}]{formular.pdf}
+
+
 %%%%%%%%%% Table of content %%%%%%%%%%%%%%%%%
 
 \tableofcontents
@@ -113,15 +120,14 @@
 
 \section{Individual contributions} %Noah
 	N.Z and J.G set up a basic concept for the simulation, N.Z. and J.G. programmed the simulation, J.G. run the simulation, N.Z and J.G. wrote the report.
-	
+
 \section{Introduction and Motivations} %Josua
 	\subsection{Motivation}
-		Desert ants (\textit{Cataglyphis}) have a difficult task to navigate since their natural habitat has not much landmarks helping to find their way. Different scientific papers (\cite{mueller}), (\cite{wehner}), (\cite{knaden}) are postulating that desert ants use path integration as one component of there navigation. Because many technical applications are inspired by nature it is of high interest to have a clear idea how ants navigate in a unrecognizable landscape like desert. We could imagine a technical use in satellite steering or the navigation of evacuation robots in. 
+		Desert ants (\textit{Cataglyphis}) have a difficult task to navigate since their natural habitat has not much landmarks helping to find their way. Different scientific papers (\cite{mueller}), (\cite{wehner}), (\cite{knaden}) are postulating that desert ants use path integration as one component of there navigation. Because many technical applications are inspired by nature it is of high interest to have a clear idea how ants navigate in a unrecognizable landscape like desert. We could imagine a technical use in satellite steering or the navigation of evacuation robots in.
 	\subsection{Base Paper}
 		This project is based on the paper "Local and global vectors in desert ant navigation" (\cite{wehner}). Through simulating an ant which follows the concepts of local and global vector described by \cite{wehner} and comparison with the actual behavior we wanted to find out if the concept postulated is complete or needs  adjustments. The goal was to implement the ant following the concepts as accurately as possible, then simulate the same test setup as it was used for the paper and compare the simulated plots with the plots from the experiments. 
 	\subsection{Hypothesis}
-		description of base paper (who did it, roughly what was it all about)
-		
+		The hypothesis for our simulation is that if we implement all the in the running text of the paper (\cite{wehner}) described navigation tools of desert ants in our simulation  we would get the same plots than Collett and his collaborators got in there real life experiment. To prevent our simulation to be a self-fulfilling prophecy the basis of implementation are only the described concepts in the running text and not the results of there experiment.
 \section{Description of the Model} %Noah
 	\subsection{Behavior of the ant}
 		For our simulation we aimed to implement our model as closely as possible to the postulated model by Collett and his participants (\cite{wehner}). Their model splits the navigation of the ant in two parts. First, if there are no known landmarks in sight  (which is the usual case in the desert, the ants natural habitat) the ants orient themselves with a process named `path integration'. An ant leaving their nest to gather food counts each step it takes and measures its direction with aid of the sunlight, which it uses as a sort of compass. Like this it is always aware of its position relative to the nest and is able to find its way home. With this practice it is also less vulnerable to changes in the environment. The integrated value, respectively its negative which is pointing to the nest, is called the \texttt{global vector} by Collett and his colleagues. However, this practice becomes unreliable if the sun is not visible or the ant makes a mistake counting its steps. Therefore the ant also uses a different form of finding their way. It uses known landmarks, as for example rocks, bushes or other static objects for his orientation. Collett uses the word \texttt{local vector} to describe this form of orientation. Here it is important to say that as Collett says he does not calculate its \texttt{local vector} according to the direction of travel, like ''after the gray rock go left'', but relative to the cardinal direction, like ''after the gray rock go south''.
@@ -180,8 +186,53 @@ rotated = np.matmul(rotationMatrix, desired)
 		\begin{align*}
 			desired\_direction = local\_vector * local\_weight + global\_vector * (1-local\_weight)
 		\end{align*}
+%Josua
+To calculate the local vector in the area of a familiar path the path is represented by a straight line with start and end point. Mathematically the straight is a linear function \( y(x)= m\times x + q \) and the vertical slope n is calculated by \( n = \frac {-1} {m}\) . This implementation leads to errors for familiar paths with slope 0 or \(\infty\). Since the familiar path does not have to be a such exact defined line we can use this simple implementation for adjusting the local vector in the region of objects.
 \section{Simulation Results and Discussion}
 	\subsection{Simulation Results} %Josua
+		Due to our simulation setup the results are plots of traced ant paths on a square map. To compare them with the experiments conducted by \cite{wehner} we take e look on there plots and define some critical characteristics in the plots, that we would like to recognize in the simulation.
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth]{p1-2.png}
+	\caption{Trajectories of ants 'homing' on the test area. \textbf{left a)} results of test setup Ba. \textbf{left b)} results of test setup Bb. \textbf{left d)} results of test setup Ca.  \textbf{left e)} results of test setup Cb. \textbf{right b)} results of test setup Bc.  \textbf{right e)} results of test setup Cc. Experiments conducted by Colletts (\cite{wehner})}
+	\label{fig:results experiment test B and C}
+\end{figure}
+	\subsubsection{Test setup Ba}
+		The setup Ba is a horizontal channel starting at the feeder/launching position in the northwest and has its exit exactly in the north of the nest. In this run the launched ants had been picked up at the feeder on the test ground therefore they have the correct global vector pointing form there position to the nest. \\
+In the plot of the experiment it can be seen that all the ants leaving the channel in south direction and then loose the direct path in a kind of cone shape. Comparing the simulation with the experiment the simulated ants leave the channel collectively in south direction and spread later than the real ants.
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{test_Ba.png}
+	\caption{Simulation setup Ba}
+	\label{fig:Ba}
+\end{wrapfigure}
+	\subsubsection{Test setup Ca}
+		The setup Ca is almost the same than Ba but the launched ants had been picked up at there nest. That means they do not have a global vector at there launching position/feeder and allocate this position as the origin to calculate the global vector. \\
+In the experiment the ants leave the channel mostly in south direction as trained but then do a kind of searching walk. The ants in the simulation heading back to the feeder but outside of the channel, because after leaving the channel in south direction the the local vector is missing and the global vector takes control of navigation. The global vector is total is useless since the ants do not know there position compared to the nest and just walk back to there launching position. In this simulation it can be seen, that \cite{wehner} did not describe the ant navigation if the global vector is disturbed by different pick up and launching position. We did not implement a searching walk since there is no idea mentioned in the paper how the ants do that.
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{test_Ca.png}
+	\caption{Simulation setup Ca}
+	\label{fig:Ca}
+\end{wrapfigure}
+	\subsubsection{Test setup Bb}
+		In the setup Bb the horizontal channel from the feeder ends at half horizontal distance to the nest. The training ground for the ant is the the same than before. \\
+In the experiment the ants walked from the exit to the nest in a slightly south curved diagonal. This can be seen better in the experiments plots \textbf{left g-i} there are the ants "segregated according to whether ants went to the left (\textbf{g}) or to the right (\textbf{h}) of a point 2m south and 0.5m east of the channel exit." (\cite{wehner} Figure 2) All the ants walking to the right (\textbf{h}) did the same as they trained actually heading south after the exit just when the local vector ends the global vector leads the ants home. In the simulation this behavior is stronger but similar.
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{test_Bb.png}
+	\caption{Simulation setup Bb}
+	\label{fig:Bb}
+\end{wrapfigure}
+		\subsubsection{Test setup Bc}
+The setup Bc is a diagonal channel of half the distance from feeder to the nest. \\
+In this experiment plot a similar behavior as in Bb can be recognized, the slightly south curved diagonal, but much less clear. In the simulation just one ant does not perform this behavior.
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\includegraphics[width=0.4\textwidth]{test_Bc.png}
+	\caption{Simulation setup Bc}
+	\label{fig:Bc}
+\end{wrapfigure}
+		\subsubsection{Familiar path near objects}
+
+
+
+
 		what did we get, is it the same
 	\subsection{Discussion}
 		what was different, probably the randomization was no as in real life
@@ -189,7 +240,7 @@ rotated = np.matmul(rotationMatrix, desired)
 	\subsection{Summary}
 		The results of our Simulation correlate quite well to the results Collett received with real ants. This leads to the conclusion that his model mirrors the behavior of the ants really precisely. The greatest difference between their experiments and our simulation is the behavior of the ants if they have no global vector, which means they have been caught at their nest. The real ants started to walk around randomly and tried to find a familiar landmark or something which helped them to get back their orientation. In the simulation if there was no global vector and also no landmarks in sight, therefore also no local vector the ants just stood still. So there must be also some random element in their orientation if the have no other help. This was not described in Colletts paper \cite{wehner}, but it could also be argued that this kind of behavior was quite obvious and therefore they did not describe it.
 	\subsection{Outlook}
-		The subject of desert ant orientation is really interesting, but does not really fit in our studies plan. So we will probably not continue our research in this topic. But generally the subject will surely be investigated more, because learning of nature is always promising and can lead to major technological discoveries. 
+		The subject of desert ant orientation is really interesting, but does not really fit in our studies plan. So we will probably not continue our research in this topic. But generally the subject will surely be investigated more, because learning of nature is always promising and can lead to major technological discoveries.
 \bibliography{bibliography}
 
 \end{document}  
