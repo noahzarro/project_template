@@ -38,4 +38,4 @@ object_path_distance_influence = 0.1    # influence how strong the local vector 
 
 # familiar path
 start_of_path = [799, 50]       # define a path direction but only influences the local vector if objects are near
-end_of_path = [800, 700]
+end_of_path = [800, 700]        # do not choose the same x or y coordinate for start and end  since 0 or inf slope is unwanted

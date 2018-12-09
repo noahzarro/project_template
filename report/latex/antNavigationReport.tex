@@ -18,6 +18,7 @@
 \usepackage{color}
 \usepackage[english]{varioref}
 \usepackage{wrapfig}
+\usepackage{pdfpages}
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
@@ -95,6 +96,10 @@
 
 % IMPORTANT
 % you MUST include the ETH declaration of originality here; it is available for download on the course website or at http://www.ethz.ch/faculty/exams/plagiarism/index_EN; it can be printed as pdf and should be filled out in handwriting
+
+
+
+\includepdf[pages={1}]{formular.pdf}
 
 
 %%%%%%%%%% Table of content %%%%%%%%%%%%%%%%%
@@ -178,6 +183,7 @@ rotated = np.matmul(rotationMatrix, desired)
 		\begin{align*}
 			desired\_direction = local\_vector * local\_weight + global\_vector * (1-local\_weight)
 		\end{align*}
+To calculate the local vector in the area of a familiar path the path is represented by a straight line with start and end point. Mathematically the straight is a linear function \( y(x)= m\times x + q \)and the vertical slope n is calculated by \( n = \frac {-1} {m}\) . 
 \section{Simulation Results and Discussion}
 	\subsection{Simulation Results} %Josua
 		what did we get, is it the same
