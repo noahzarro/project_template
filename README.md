@@ -3,7 +3,7 @@
 
 > * Group Name: JosuNo
 > * Group participants names: Josua Graf, Noah Zarro
-> * Project Title: (can be changed later)
+> * Project Title: desert ant navigation
 > * Programming language: Python
 
 ## General Introduction
