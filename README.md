@@ -39,7 +39,7 @@ Agent-Based Model, but we are not yet sure
 
 0. git clone https://github.com/noahzarro/project_template
 1. install numphy and matplotlib: python -m pip install numpy matplotlib
-2. run code\Main.py, a graph opens, showing the path several ants took with the testcase Ba as described in the report:
-   python code\Main.py
+2. run code/Main.py, a graph opens, showing the path several ants took with the testcase Ba as described in the report:
+   python project_template/code/Main.py
 3. (full Test) If you want to change the testcase, just change line 12 in code\Config.py to whatever testfile you want. All possible testfiles lay in the folder code.
 
